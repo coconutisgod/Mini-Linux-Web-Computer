@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mini Linux Web Computer</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="panel hero">
+        <div>
+          <p class="eyebrow">Codespaces Linux desktop</p>
+          <h1>Mini Linux Web Computer</h1>
+          <p class="muted">Open the desktop, launch basic apps, and relay live data to an ESP32 WROOM.</p>
+        </div>
+        <div class="hero-actions">
+          <a id="desktopLink" class="button primary" href="#" target="_blank" rel="noreferrer">Open desktop</a>
+          <button id="connectBtn" class="button">Connect dashboard</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Connection</h2>
+          <label>
+            Admin token
+            <input id="adminToken" type="password" autocomplete="off" value="admin-dev-token">
+          </label>
+          <p id="status" class="status">Disconnected</p>
+          <p class="hint">For real use, set <code>ADMIN_TOKEN</code>, <code>DEVICE_TOKEN</code>, and <code>VNC_PASSWORD</code> as Codespaces secrets.</p>
+        </article>
+
+        <article class="panel">
+          <h2>Linux Apps</h2>
+          <div class="button-grid">
+            <button data-task="open_chromium">Chromium</button>
+            <button data-task="open_files">Files</button>
+            <button data-task="open_terminal">Terminal</button>
+            <button data-task="storage">Storage</button>
+            <button data-task="memory">Memory</button>
+            <button data-task="java">Java</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2>ESP32 Devices</h2>
+          <div id="deviceList" class="device-list">No devices online.</div>
+          <div class="command-row">
+            <button data-command="ping">Ping</button>
+            <button data-command="led_on">LED on</button>
+            <button data-command="led_off">LED off</button>
+          </div>
+          <label>
+            Custom command
+            <input id="customCommand" type="text" value="hello">
+          </label>
+          <button id="sendCustom">Send command</button>
+        </article>
+
+        <article class="panel wide">
+          <h2>Output</h2>
+          <pre id="output"></pre>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
